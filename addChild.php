@@ -77,6 +77,7 @@
     </form>
 
     <?php
+    if ($_SERVER['REQUEST_METHOD'] == "POST") {
     // Check If form submitted, insert form data into users table. 
     if (isset($_POST['submit'])) {
         $child_id = $_POST['child_id'];
@@ -86,10 +87,55 @@
         $child_height = $_POST['child_height'];
         $child_birthday = $_POST['child_birthday'];
         $child_bloodtype = $_POST['child_bloodtype'];
-        $images = upload();
-        if (!$images) {
-            return false;
+        $images = $_FILES['images']['name'];
+        $folder = "../Assets/".$images;
+    
+    
+        if (isset($images)) {
+            $fileName = $_FILES["images"]["name"];
+            $fileSize = $_FILES["images"]["size"];
+            $error = $_FILES["images"]["error"];
+            $tempName = $_FILES["images"]["tmp_name"];
+    
+            //cek apakah tidak ada gambar yg diupload
+            if ($error === 4) {
+                echo "<script>
+                            alert('Please upload an images.');
+                            </script>";
+                return false;
+            }
+            //cek yg diupload harus gambar
+            $imgValidation = ['jpg', 'jpeg', 'png'];
+            $imgExt = explode('.', $fileName);
+            $imgExt = strtolower(end($imgExt));
+            if (!in_array($imgExt, $imgValidation)) {
+                echo "<script>
+                        alert('Please upload a file with images extension (jpg, jpeg, or png).');
+                        </script>";
+                return false;
+            }
+    
+            //cek limit ukuran file
+            if ($fileSize > 1000000) {
+                echo "<script>
+                        alert('File size is too big!');
+                        </script>";
+                return false;
+            }
+    
+            //kalo lolos smua validasi maka generate nama images baru
+            //biar user yg beda bisa upload dgn nama file yg sama
+            $newFileName = uniqid();
+    
+            $newFileName .= ".";
+            $newFileName .= "$imgExt";
+            // var_dump($newFileName); die;
+    
+            move_uploaded_file($tempName, '../Assets/' . $newFileName);
+    
+            return $newFileName;
         }
+    
 
 
         // include database connection file 
@@ -100,54 +146,9 @@
 
         // Show message when user added
         echo "Successfully added  child  <a href='index.php' class='btn btn-secondary'>Back to Home</a>";
-    }
-
-    function upload()
-    {
-        $fileName = $_FILES["images"]["name"];
-        $fileSize = $_FILES["images"]["size"];
-        $error = $_FILES["images"]["error"];
-        $tempName = $_FILES["images"]["tmp_name"];
-
-        //cek apakah tidak ada gambar yg diupload
-        if ($error === 4) {
-            echo "<script>
-                        alert('Please upload an images.');
-                        </script>";
-            return false;
-        }
-        //cek yg diupload harus gambar
-        $imgValidation = ['jpg', 'jpeg', 'png'];
-        $imgExt = explode('.', $fileName);
-        $imgExt = strtolower(end($imgExt));
-        if (!in_array($imgExt, $imgValidation)) {
-            echo "<script>
-                    alert('Please upload a file with images extension (jpg, jpeg, or png).');
-                    </script>";
-            return false;
-        }
-
-        //cek limit ukuran file
-        if ($fileSize > 1000000) {
-            echo "<script>
-                    alert('File size is too big!');
-                    </script>";
-            return false;
-        }
-
-        //kalo lolos smua validasi maka generate nama images baru
-        //biar user yg beda bisa upload dgn nama file yg sama
-        $newFileName = uniqid();
-
-        $newFileName .= ".";
-        $newFileName .= "$imgExt";
-        // var_dump($newFileName); die;
-
-        move_uploaded_file($tempName, '../Assets/' . $newFileName);
-
-        return $newFileName;
-    }
-    ?>
+    }   
+}
+?>
 </body>
 
 </html>

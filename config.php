@@ -1,7 +1,7 @@
 <?php
 
 $databaseHost = 'localhost';
-$databaseName = 'tpnv2_db';
+$databaseName = 'tpn-dtbs-v2';
 $databaseUsername = 'root';
 $databasePassword = '';
 

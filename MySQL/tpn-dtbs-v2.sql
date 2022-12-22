@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2022 at 05:28 PM
+-- Generation Time: Dec 22, 2022 at 02:38 AM
 -- Server version: 10.4.27-MariaDB
--- PHP Version: 8.1.12
+-- PHP Version: 8.0.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `tpnv2_db`
+-- Database: `tpn-dtbs-v2`
 --
 
 -- --------------------------------------------------------
@@ -50,7 +50,7 @@ INSERT INTO `child` (`child_id`, `child_name`, `child_identifier`, `child_gender
 (4, 'Yugo', 'ETR3M8', 'Male', 182, 'December 24, 2017', 'A', b'0', 'yugo.jpg'),
 (5, 'Lucas', 'KGX2A7', 'Male', 186, 'November 28, 2017', 'B', b'0', 'lucas.jpg'),
 (6, 'Gillian', 'QI', 'Female', 150, 'September 30, 2030', 'B', b'0', 'gillian.jpg'),
-(7, 'Oliver', 'AII 866-890', 'Male', 174, 'October 25, 2028', 'B', b'0', 'oliver.jpg'),
+(7, 'Oliver', 'AII 866-890', 'Male', 174, 'October 25, 2028', 'B', b'1', 'oliver.jpg'),
 (8, 'Violet', 'DIV 332-198', 'Male', 146, 'June 12, 2032', 'AB', b'0', 'violet.jpg'),
 (9, 'Barbara', '-', 'Female', 160, 'June 18, 2031', 'AB', b'0', 'barbara.jpg'),
 (10, 'Zazie', '-', 'Male', 200, 'February 2, 2042', 'O', b'0', 'zazie.jpg');
@@ -83,9 +83,7 @@ INSERT INTO `locations` (`locations_id`, `locations_name`, `locations_status`, `
 (5, 'Lambda 7214', 'The Demon World', 'Plantation', 10, 5, b'0'),
 (6, 'The Promised Forest', 'The Demon World', '-', 1, 8, b'0'),
 (7, 'The Forest', 'The Demon World', '-', 3, 7, b'0'),
-(8, 'Goldy Pond', 'The Demon World', '-', 4, 9, b'0'),
-(9, 'dfasasdf', 'sdfasf', 'asdfasd', 2, 1, b'1'),
-(11, 'dsfa', 'sdf', 'dsaf', 2, 1, b'1');
+(8, 'Goldy Pond', 'The Demon World', '-', 4, 9, b'0');
 
 -- --------------------------------------------------------
 
@@ -114,8 +112,7 @@ INSERT INTO `observer` (`observer_id`, `observer_name`, `observer_species`, `obs
 (6, 'James Ratri', 'Human', 'Male', b'0'),
 (7, 'Sonju', 'Demon', 'Male', b'0'),
 (8, 'Mujika', 'Demon', 'Female', b'0'),
-(9, 'Leuvis', 'Demon', 'Male', b'0'),
-(11, 'Kimi', 'Sei', 'Hae', b'0');
+(9, 'Leuvis', 'Demon', 'Male', b'0');
 
 -- --------------------------------------------------------
 

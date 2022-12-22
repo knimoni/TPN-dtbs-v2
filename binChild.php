@@ -11,13 +11,37 @@
         <title>Deleted child list</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <style>
-            body{ font: 14px sans-serif; }
-            table {table-layout: fixed; max-width: 100%; border-collapse: collapse; border: 1px solid black; margin: .25rem auto .5rem auto;}
-            th { padding: 1rem; }
-            td {padding: 1.5rem 1rem;}
-            h3 {text-align: center;}
-            div {width: fit-content; }
-        </style>
+    body {
+        font: 14px sans-serif;
+    }
+
+    table {
+        margin: 1rem auto 1.25rem auto;
+    }
+
+    th {
+        padding: 1rem;
+        text-align: center;
+    }
+
+    td {
+        padding: 1.5rem 1rem;
+        text-align: center;
+    }
+
+    h3 {
+        text-align: center;
+    }
+
+    div {
+        width: fit-content;
+    }
+    a {
+        color:purple;
+        padding: 7px;
+        border: .5px solid purple;
+    }
+    </style>
     </head>
 
     <body>
